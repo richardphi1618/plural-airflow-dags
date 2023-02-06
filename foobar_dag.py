@@ -3,8 +3,6 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.utils.dates import days_ago
 
-from apexutil import build_default_args
-
 # These args will get passed on to each operator
 # You can override them on a per-task basis during operator initialization
 default_args = {
@@ -30,7 +28,7 @@ default_args = {
 }
 dag = DAG(
     "foobar",
-    default_args=build_default_args(**default_args),
+    default_args=default_args,
     description="this is a test",
     schedule_interval=None,
     start_date=days_ago(0),
